@@ -1,0 +1,41 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+apply from :rootDir.getAbsolutePath()+"/gradle/config.gradle"
+apply from :rootDir.getAbsolutePath()+"/gradle/function.gradle"
+
+
+buildscript {
+    
+    repositories {
+        google()
+        maven {
+            url 'https://dl.bintray.com/wangchaochao/WeRouter'
+        }
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.0'
+        classpath 'cn.wang.werouter:plugin:1.0.0'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        //这里是给所以的module都能用
+        google()
+        maven {
+            url 'https://dl.bintray.com/wangchaochao/WeRouter'
+        }
+        jcenter()
+    }
+    //全局配置编码方式  以及java版本
+    tasks.withType(JavaCompile){
+        options.encoding = "UTF-8"
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

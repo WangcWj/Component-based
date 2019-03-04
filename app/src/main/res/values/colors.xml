@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+
+
+    <color name="line_color_bg">#eeeeee</color>
+    <color name="layout_bg">#f7f7f7</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="transparent1">#010101</color>
+    <color name="NextStepTextViewEnableColor">#c0c0c0</color>
+    <color name="NextStepTextViewUnEnableColor">#ff712d</color>
+    <color name="black">#000000</color>
+    <color name="guide_color_bg">#70000000</color>
+    <color name="cb0b0b0">#b0b0b0</color>
+    <color name="cc1c1c1">#c1c1c1</color>
+</resources>

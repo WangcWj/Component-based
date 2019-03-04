@@ -1,0 +1,63 @@
+
+apply plugin: 'com.android.library'
+
+def app = rootProject.ext.app
+def appVersion = rootProject.ext.appVersion
+def appDependencies = rootProject.ext.appDependencies
+def rxJava2 = rootProject.ext.rxjavaDependencies
+def text = rootProject.ext.text
+def eventBus = rootProject.ext.eventBus
+def router = rootProject.ext.weRouter
+def gson = rootProject.ext.gson
+
+
+android {
+    compileSdkVersion app.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion app.minSdkVersion
+        targetSdkVersion app.targetSdkVersion
+        versionCode appVersion.versionCode
+        versionName appVersion.versionName
+        buildConfigField("String", "moduleName","\""+getName()+"\"")
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [WEROUTER_MODULE_NAME: project.getName()]
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    compile appDependencies.appcompat
+    compile appDependencies.constraint
+    compile appDependencies.multidex
+    compile appDependencies.design
+    //单元测试
+    compile text.junitTest
+    compile text.androidTestRunner
+    compile text.androidTestEspresso
+    //Rxjava
+    compile rxJava2.rxjava2
+    compile rxJava2.rxAndroid2
+    //eventbus
+    compile eventBus
+    //gson
+    compile gson
+    //module之间的路由框架
+    compile 'cn.wang.werouter:api:1.0.0'
+}

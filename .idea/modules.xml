@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ComponentDemo.iml" filepath="$PROJECT_DIR$/ComponentDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app_components/app_components.iml" filepath="$PROJECT_DIR$/app_components/app_components.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app_lib/app_lib.iml" filepath="$PROJECT_DIR$/app_lib/app_lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app_login/app_login.iml" filepath="$PROJECT_DIR$/app_login/app_login.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app_main/app_main.iml" filepath="$PROJECT_DIR$/app_main/app_main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app_supermarket/app_suparmarket.iml" filepath="$PROJECT_DIR$/app_supermarket/app_suparmarket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app_supermarket/app_supermarket.iml" filepath="$PROJECT_DIR$/app_supermarket/app_supermarket.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cptr/cptr.iml" filepath="$PROJECT_DIR$/cptr/cptr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app_login/login.iml" filepath="$PROJECT_DIR$/app_login/login.iml" />
+    </modules>
+  </component>
+</project>

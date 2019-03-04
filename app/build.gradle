@@ -1,0 +1,58 @@
+apply plugin: 'com.android.application'
+apply plugin: 'cn.werouter.plugin'
+def app = rootProject.ext.app
+def appVersion = rootProject.ext.appVersion
+def leakCanary = rootProject.ext.leakCanary
+
+String modules = rootProject.getPropertiesFile.toString()
+def moduleArray = modules.split(",")
+
+android {
+    signingConfigs {
+        release {
+            keyAlias 'wang'
+            keyPassword '12345678'
+            storeFile file('../jks/component.jks')
+            storePassword '12345678'
+        }
+
+        debug {
+            keyAlias 'wang'
+            keyPassword '12345678'
+            storeFile file('../jks/component.jks')
+            storePassword '12345678'
+        }
+    }
+    compileSdkVersion app.compileSdkVersion
+    defaultConfig {
+        applicationId app.applicationId
+        minSdkVersion app.minSdkVersion
+        targetSdkVersion app.targetSdkVersion
+        versionCode appVersion.versionCode
+        versionName appVersion.versionName
+        buildConfigField("String", "moduleName", "\"" + getName() + "\"")
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    if (null != moduleArray && moduleArray.size() > 0) {
+        moduleArray.each { name ->
+            implementation project(":${name}")
+        }
+    }
+    //内存泄漏检测
+    debugImplementation leakCanary.debug
+    releaseImplementation leakCanary.release
+}

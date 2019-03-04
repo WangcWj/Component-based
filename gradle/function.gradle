@@ -1,0 +1,34 @@
+//提供一些脚本方法供所有的Module调用
+def getPropertiesFile() {
+    try {
+        def releaseModule = "releaseModules"
+        def openDebug = "openDebug"
+        def debugModule = "debugModule"
+        Properties pop = new Properties()
+        File properFile = new File(rootDir.getAbsolutePath() + "/gradle/config.properties")
+        pop.load(properFile.newDataInputStream())
+        def userTest = pop.getProperty(openDebug)
+        def isModule
+        if (userTest.toBoolean()) {
+            isModule = pop.getProperty(debugModule)
+        }else{
+            isModule = pop.getProperty(releaseModule)
+        }
+        return isModule
+    } catch (Exception e) {
+        println("获取配置文件出现错误请检查配置文件路径是否正确!    异常: " + e)
+    }
+}
+
+ext {
+    getPropertiesFile = getPropertiesFile()
+}
+
+/*ext {
+    propertiesFile = {
+       boolean param ->
+           return getPropertiesFile(param)
+    }
+}*/
+
+
