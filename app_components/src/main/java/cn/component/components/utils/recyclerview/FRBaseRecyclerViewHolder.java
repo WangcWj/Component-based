@@ -6,8 +6,6 @@ import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
 
-import com.mifengkong.frtools.util.debug.FRLog;
-
 
 /**
  * 对RecyclerView的ViewHolder的封装
@@ -59,7 +57,6 @@ public abstract class FRBaseRecyclerViewHolder<DATA> extends RecyclerView.ViewHo
             try {
                 onItemDataUpdated(data);
             } catch (Exception e) {
-                FRLog.error(e);
             }
         }
     }
