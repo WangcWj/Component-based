@@ -43,21 +43,21 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    compile appDependencies.appcompat
-    compile appDependencies.constraint
-    compile appDependencies.multidex
-    compile appDependencies.design
+    api appDependencies.appcompat
+    api appDependencies.constraint
+    api appDependencies.multidex
+    api appDependencies.design
     //单元测试
-    compile text.junitTest
-    compile text.androidTestRunner
-    compile text.androidTestEspresso
+    api text.junitTest
+    api text.androidTestRunner
+    api text.androidTestEspresso
     //Rxjava
-    compile rxJava2.rxjava2
-    compile rxJava2.rxAndroid2
+    api rxJava2.rxjava2
+    api rxJava2.rxAndroid2
     //eventbus
-    compile eventBus
+    api eventBus
     //gson
-    compile gson
+    api gson
     //module之间的路由框架
-    compile 'cn.wang.werouter:api:1.0.0'
+    api 'cn.wang.werouter:api:1.0.0'
 }
