@@ -30,8 +30,14 @@ ext {
     ]
 
     rxjavaDependencies = [
-            rxAndroid2 : 'io.reactivex.rxjava2:rxandroid:2.0.1',
-            rxjava2 : 'io.reactivex.rxjava2:rxjava:2.1.0'
+            rxAndroid2 : 'io.reactivex.rxjava2:rxandroid:2.0.2',
+            rxjava2 : 'io.reactivex.rxjava2:rxjava:2.2.2'
+    ]
+
+    retrofits = [
+            adapter : 'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
+            retrofit : 'com.squareup.retrofit2:retrofit:2.4.0',
+            converter_gson : 'com.squareup.retrofit2:converter-gson:2.3.0'
     ]
 
     leakCanary = [

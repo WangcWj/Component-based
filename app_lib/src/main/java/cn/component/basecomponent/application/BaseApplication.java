@@ -32,7 +32,6 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-
     }
 
     @Override
@@ -40,4 +39,5 @@ public class BaseApplication extends Application {
         super.attachBaseContext(base);
         MultiDex.install(this);
     }
+
 }

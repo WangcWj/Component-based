@@ -9,7 +9,7 @@
       <module fileurl="file://$PROJECT_DIR$/app_login/app_login.iml" filepath="$PROJECT_DIR$/app_login/app_login.iml" />
       <module fileurl="file://$PROJECT_DIR$/app_main/app_main.iml" filepath="$PROJECT_DIR$/app_main/app_main.iml" />
       <module fileurl="file://$PROJECT_DIR$/app_supermarket/app_supermarket.iml" filepath="$PROJECT_DIR$/app_supermarket/app_supermarket.iml" />
-      <module fileurl="file://$PROJECT_DIR$/cptr/cptr.iml" filepath="$PROJECT_DIR$/cptr/cptr.iml" />
+      <module fileurl="file://$PROJECT_DIR$/lib_network/lib_network.iml" filepath="$PROJECT_DIR$/lib_network/lib_network.iml" />
     </modules>
   </component>
 </project>

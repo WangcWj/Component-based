@@ -8,10 +8,12 @@ import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
 /**
- * Created by WANG on 2018/7/23.
  * 1.处理网络请求,取消订阅.
  * 2.BufferKnife,EventBus等.
  * 3.根据具体的业务去封装.
+ *
+ * @author WANG
+ * @date 2018/7/23
  */
 
 public abstract class BaseActivity extends AppCompatActivity  {
@@ -27,22 +29,16 @@ public abstract class BaseActivity extends AppCompatActivity  {
         int layoutId = getLayoutId();
         setContentView(layoutId);
         ActivityStackManager.getInstance().addActivity(this);
-        initView();
-        initData();
-        initListener();
+        realCreate();
     }
 
     protected abstract int getLayoutId();
 
-    protected abstract void initView();
-
-    protected abstract void initData();
-
-    protected abstract void initListener();
+    protected abstract void realCreate();
 
     @Override
     protected void onDestroy() {
-        ActivityStackManager.getInstance().removeActivity(this);
         super.onDestroy();
+        ActivityStackManager.getInstance().removeActivity(this);
     }
 }

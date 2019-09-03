@@ -19,13 +19,12 @@ public class AppApplication extends BaseApplication {
     @Override
     public void onCreate() {
         super.onCreate();
-        leakCarry();
-        boolean mainProcess = ApplicationUtils.isAppMainProcess(this);
+        boolean mainProcess = ApplicationUtils.isMainProcess(this);
         if(mainProcess){
-
+            WeRouter.init(this);
+            leakCarry();
         }
         Log.e("WANG","AppApplication.onCreate."+mainProcess );
-        WeRouter.init(this);
 
     }
 

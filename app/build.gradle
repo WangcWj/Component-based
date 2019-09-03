@@ -8,6 +8,16 @@ String modules = rootProject.getPropertiesFile.toString()
 def moduleArray = modules.split(",")
 
 android {
+    compileSdkVersion app.compileSdkVersion
+    defaultConfig {
+        applicationId app.applicationId
+        minSdkVersion app.minSdkVersion
+        targetSdkVersion app.targetSdkVersion
+        versionCode appVersion.versionCode
+        versionName appVersion.versionName
+        buildConfigField("String", "moduleName", "\"" + getName() + "\"")
+    }
+
     signingConfigs {
         release {
             keyAlias 'wang'
@@ -23,15 +33,7 @@ android {
             storePassword '12345678'
         }
     }
-    compileSdkVersion app.compileSdkVersion
-    defaultConfig {
-        applicationId app.applicationId
-        minSdkVersion app.minSdkVersion
-        targetSdkVersion app.targetSdkVersion
-        versionCode appVersion.versionCode
-        versionName appVersion.versionName
-        buildConfigField("String", "moduleName", "\"" + getName() + "\"")
-    }
+
     buildTypes {
         release {
             minifyEnabled false

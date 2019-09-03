@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-       /* findViewById(R.id.main_out).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.main_out).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -47,13 +47,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.router_map).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Map<String, String> routerMap = WeRouter.getInstance().getRouterMap();
-                Gson gson = new Gson();
-                String json = gson.toJson(routerMap);
-                RouterMapBean routerMapBean = gson.fromJson(json, RouterMapBean.class);
-                Log.e("WANG","MainActivity.onClick.MainOutPutImp "+json );
+
             }
-        });*/
+        });
 
     }
 }
