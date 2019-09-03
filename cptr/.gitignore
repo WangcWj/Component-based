@@ -1,7 +1,0 @@
-/build
-*.iml
-*.apk
-*.log
-.DS_Store
-cptr.iml
-cptr/build/
