@@ -36,6 +36,6 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation project(":${rootProject.ext.baseComponent}")
+    api project(":${rootProject.ext.baseComponent}")
     annotationProcessor 'cn.wang.werouter:compiler:1.0.0'
 }

@@ -6,6 +6,7 @@ import android.view.View;
 
 import cn.router.api.router.WeRouter;
 import cn.router.werouter.annotation.Router;
+import cn.wenet.networkcomponent.WeNetwork;
 
 /**
  * @author WANG

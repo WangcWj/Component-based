@@ -13,8 +13,8 @@ ext {
             versionName : "1.0.0"
     ]
 
-    baseLib = "app_lib"
-    baseComponent = "app_components"
+    baseLib = "base_lib"
+    baseComponent = "base_res"
 
     appDependencies = [
             appcompat  : 'com.android.support:appcompat-v7:26.1.0',
