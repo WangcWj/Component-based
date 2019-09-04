@@ -8,9 +8,6 @@ buildscript {
     
     repositories {
         google()
-        maven {
-            url 'https://dl.bintray.com/wangchaochao/WeRouter'
-        }
         jcenter()
     }
     dependencies {

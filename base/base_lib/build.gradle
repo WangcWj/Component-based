@@ -7,7 +7,6 @@ def appDependencies = rootProject.ext.appDependencies
 def rxJava2 = rootProject.ext.rxjavaDependencies
 def text = rootProject.ext.text
 def eventBus = rootProject.ext.eventBus
-def router = rootProject.ext.weRouter
 def gson = rootProject.ext.gson
 
 
