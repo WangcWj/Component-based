@@ -59,6 +59,6 @@ dependencies {
     //gson
     api gson
     //module之间的路由框架
-    api 'cn.wang.werouter:api:1.0.0'
+    api 'cn.wang.werouter:api:1.0.2'
     api project(':lib_network')
 }
