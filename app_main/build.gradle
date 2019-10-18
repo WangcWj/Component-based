@@ -1,28 +1,28 @@
 apply plugin: 'com.android.library'
 
-def app = rootProject.ext.app
-def appVersion = rootProject.ext.appVersion
+def config = rootProject.ext
 
 android {
-    compileSdkVersion app.compileSdkVersion
-
+    compileSdkVersion config.app.compileSdkVersion
     defaultConfig {
-        minSdkVersion app.minSdkVersion
-        targetSdkVersion app.targetSdkVersion
-        versionCode appVersion.versionCode
-        versionName appVersion.versionName
+        minSdkVersion config.app.minSdkVersion
+        targetSdkVersion config.app.targetSdkVersion
+        versionCode config.appVersion.versionCode
+        versionName config.appVersion.versionName
+
         buildConfigField("String", "moduleName", "\"" + getName() + "\"")
         javaCompileOptions {
             annotationProcessorOptions {
                 arguments = [WEROUTER_MODULE_NAME: project.getName()]
             }
         }
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -35,6 +35,9 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    api project(":${rootProject.ext.baseComponent}")
-    annotationProcessor 'cn.wang.werouter:compiler:1.0.0'
+    implementation project(config.baseRes)
+    if (config.isRunMain.toBoolean()){
+        //路由
+        annotationProcessor project(':router:werouter-compiler')
+    }
 }

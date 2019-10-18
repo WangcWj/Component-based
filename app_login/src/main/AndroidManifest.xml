@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="cn.component.login">
+    package="cn.education.app_login">
 
     <application>
-        <activity android:name=".AdActivity"></activity>
-        <activity android:name=".LoginActivity" />
+        <meta-data
+            android:name="login"
+            android:value="cn.education.app_login.LoginApplication" />
+        <activity
+            android:name=".LoginActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

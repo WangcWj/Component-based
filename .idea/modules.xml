@@ -6,12 +6,15 @@
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app_login/app_login.iml" filepath="$PROJECT_DIR$/app_login/app_login.iml" />
       <module fileurl="file://$PROJECT_DIR$/app_main/app_main.iml" filepath="$PROJECT_DIR$/app_main/app_main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app_supermarket/app_supermarket.iml" filepath="$PROJECT_DIR$/app_supermarket/app_supermarket.iml" />
-      <module fileurl="file://$PROJECT_DIR$/base/lib_network/base-lib_network.iml" filepath="$PROJECT_DIR$/base/lib_network/base-lib_network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/base/base.iml" filepath="$PROJECT_DIR$/base/base.iml" />
       <module fileurl="file://$PROJECT_DIR$/base/base_lib/base_lib.iml" filepath="$PROJECT_DIR$/base/base_lib/base_lib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/base/base_network/base_network.iml" filepath="$PROJECT_DIR$/base/base_network/base_network.iml" />
       <module fileurl="file://$PROJECT_DIR$/base/base_res/base_res.iml" filepath="$PROJECT_DIR$/base/base_res/base_res.iml" />
-      <module fileurl="file://$PROJECT_DIR$/base/base_res/base_res~1.iml" filepath="$PROJECT_DIR$/base/base_res/base_res~1.iml" />
-      <module fileurl="file://$PROJECT_DIR$/base/lib_network/lib_network.iml" filepath="$PROJECT_DIR$/base/lib_network/lib_network.iml" />
+      <module fileurl="file://$PROJECT_DIR$/router/router.iml" filepath="$PROJECT_DIR$/router/router.iml" />
+      <module fileurl="file://$PROJECT_DIR$/router/werouter-annotation/werouter-annotation.iml" filepath="$PROJECT_DIR$/router/werouter-annotation/werouter-annotation.iml" />
+      <module fileurl="file://$PROJECT_DIR$/router/werouter-api/werouter-api.iml" filepath="$PROJECT_DIR$/router/werouter-api/werouter-api.iml" />
+      <module fileurl="file://$PROJECT_DIR$/router/werouter-compiler/werouter-compiler.iml" filepath="$PROJECT_DIR$/router/werouter-compiler/werouter-compiler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/router/werouter_plugin/werouter_plugin.iml" filepath="$PROJECT_DIR$/router/werouter_plugin/werouter_plugin.iml" />
     </modules>
   </component>
 </project>

@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">app_components</string>
+    <string name="app_name">base_res</string>
     <item name="item_position" type="id"/>
 </resources>

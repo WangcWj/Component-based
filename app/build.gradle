@@ -1,46 +1,42 @@
 apply plugin: 'com.android.application'
 apply plugin: 'cn.werouter.plugin'
-def app = rootProject.ext.app
-def appVersion = rootProject.ext.appVersion
-def leakCanary = rootProject.ext.leakCanary
 
-String modules = rootProject.getPropertiesFile.toString()
-def moduleArray = modules.split(",")
+def config = rootProject.ext
+String moduleStr = rootProject.ext.getModuleConfiog
+def modules = moduleStr.split(",")
+System.out.println("---------${modules}----------")
 
 android {
-    compileSdkVersion app.compileSdkVersion
+    compileSdkVersion config.app.compileSdkVersion
     defaultConfig {
-        applicationId app.applicationId
-        minSdkVersion app.minSdkVersion
-        targetSdkVersion app.targetSdkVersion
-        versionCode appVersion.versionCode
-        versionName appVersion.versionName
+        applicationId config.app.applicationId
+        minSdkVersion config.app.minSdkVersion
+        targetSdkVersion config.app.targetSdkVersion
+        versionCode config.appVersion.versionCode
+        versionName config.appVersion.versionName
+
         buildConfigField("String", "moduleName", "\"" + getName() + "\"")
-    }
-
-    signingConfigs {
-        release {
-            keyAlias 'wang'
-            keyPassword '12345678'
-            storeFile file('../jks/component.jks')
-            storePassword '12345678'
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [WEROUTER_MODULE_NAME: project.getName()]
+            }
         }
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        debug {
-            keyAlias 'wang'
-            keyPassword '12345678'
-            storeFile file('../jks/component.jks')
-            storePassword '12345678'
-        }
+        multiDexEnabled true
     }
-
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+
+    dexOptions {
+        javaMaxHeapSize '4g'
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -48,13 +44,20 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    if (null != moduleArray && moduleArray.size() > 0) {
-        moduleArray.each { name ->
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    if (null != modules && modules.size() > 0) {
+        modules.each { name ->
             implementation project(":${name}")
         }
     }
+    implementation project(config.baseRes)
+
     //内存泄漏检测
-    debugImplementation leakCanary.debug
-    releaseImplementation leakCanary.release
+    debugImplementation config.leakCanary.debug
+    releaseImplementation config.leakCanary.release
+    //路由
+    annotationProcessor project(':router:werouter-compiler')
+    //ButterKnife
+    annotationProcessor config.bufferkinfe.annotation
+
 }

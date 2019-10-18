@@ -1,35 +1,22 @@
-
 apply plugin: 'com.android.library'
 
-def app = rootProject.ext.app
-def appVersion = rootProject.ext.appVersion
-def appDependencies = rootProject.ext.appDependencies
-def rxJava2 = rootProject.ext.rxjavaDependencies
-def text = rootProject.ext.text
-def eventBus = rootProject.ext.eventBus
-def gson = rootProject.ext.gson
-
+def config = rootProject.ext
 
 android {
-    compileSdkVersion app.compileSdkVersion
-
+    compileSdkVersion config.app.compileSdkVersion
     defaultConfig {
-        minSdkVersion app.minSdkVersion
-        targetSdkVersion app.targetSdkVersion
-        versionCode appVersion.versionCode
-        versionName appVersion.versionName
-        buildConfigField("String", "moduleName","\""+getName()+"\"")
-        javaCompileOptions {
-            annotationProcessorOptions {
-                arguments = [WEROUTER_MODULE_NAME: project.getName()]
-            }
-        }
+        minSdkVersion config.app.minSdkVersion
+        targetSdkVersion config.app.targetSdkVersion
+        versionCode config.appVersion.versionCode
+        versionName config.appVersion.versionName
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
 
@@ -37,27 +24,22 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
-
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api appDependencies.appcompat
-    api appDependencies.constraint
-    api appDependencies.multidex
-    api appDependencies.design
-    //单元测试
-    api text.junitTest
-    api text.androidTestRunner
-    api text.androidTestEspresso
-    //Rxjava
-    api rxJava2.rxjava2
-    api rxJava2.rxAndroid2
-    //eventbus
-    api eventBus
-    //gson
-    api gson
-    //module之间的路由框架
-    api 'cn.wang.werouter:api:1.0.2'
-    api project(':lib_network')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(config.baseNetwork)
+    api project(':router:werouter-api')
+
+    api config.supports.appcompat
+    api config.supports.constraint
+    api config.supports.design
+    api config.supports.multidex
+    api config.bufferkinfe.api
+
+
+    api (config.glide.api){
+        exclude group:'com.android.support'
+    }
+
 }

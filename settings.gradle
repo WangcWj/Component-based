@@ -1,12 +1,1 @@
-
-
-include ':app', ':app_login', ':app_supermarket', ':app_main'
-
-include 'base_lib'
-project(':base_lib').projectDir = new File('./base/base_lib')
-
-include 'base_res'
-project(':base_res').projectDir = new File('./base/base_res')
-
-include 'lib_network'
-project(':lib_network').projectDir = new File('./base/lib_network')
+include ':app', ':app_login', ':app_main', ':base:base_lib', ':base:base_res',':base:base_network',':router:werouter-annotation',':router:werouter-api',':router:werouter-compiler',':router:werouter_plugin'

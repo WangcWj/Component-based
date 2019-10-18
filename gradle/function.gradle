@@ -1,34 +1,43 @@
-//提供一些脚本方法供所有的Module调用
-def getPropertiesFile() {
-    try {
-        def releaseModule = "releaseModules"
-        def openDebug = "openDebug"
-        def debugModule = "debugModule"
-        Properties pop = new Properties()
-        File properFile = new File(rootDir.getAbsolutePath() + "/gradle/config.properties")
-        pop.load(properFile.newDataInputStream())
-        def userTest = pop.getProperty(openDebug)
-        def isModule
-        if (userTest.toBoolean()) {
-            isModule = pop.getProperty(debugModule)
-        }else{
-            isModule = pop.getProperty(releaseModule)
-        }
-        return isModule
-    } catch (Exception e) {
-        println("获取配置文件出现错误请检查配置文件路径是否正确!    异常: " + e)
+//一些通用的脚本方法
+def getConfig() {
+    Properties pop = new Properties()
+    File popFile = new File(rootDir.getAbsolutePath() + "/gradle/config.properties")
+    pop.load(popFile.newDataInputStream())
+
+    def openDebug = pop.getProperty("openDebug")
+    String modules
+    if(openDebug.toBoolean()){
+        System.out.println("-----打开了调试内容----")
+        modules = pop.getProperty("debugModule")
+    }else {
+        modules = pop.getProperty("releaseModules")
     }
+    if(modules.contains("app_login")){
+        rootProject.ext.loginModuleIsRun = true
+    }
+    if(modules.contains("app_main")){
+        rootProject.ext.mainModuleIsRun = true
+    }
+    return modules
 }
+
+def isRunMain(){
+    return rootProject.ext.mainModuleIsRun
+}
+
+def isRunLogin(){
+    return rootProject.ext.loginModuleIsRun
+}
+
 
 ext {
-    getPropertiesFile = getPropertiesFile()
+    getModuleConfiog = getConfig()
+
+    isRunMain = isRunMain()
+
+    isRunLogin = isRunLogin()
 }
 
-/*ext {
-    propertiesFile = {
-       boolean param ->
-           return getPropertiesFile(param)
-    }
-}*/
+
 
 
