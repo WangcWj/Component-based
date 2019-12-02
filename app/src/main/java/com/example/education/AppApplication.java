@@ -44,6 +44,7 @@ public class AppApplication extends BaseApplication {
                 .navigation();
         loginInit.onCreate();
         mainInit.onCreate();*/
+      getApplicationContext();
 
         try {
             ApplicationInfo applicationInfo = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);

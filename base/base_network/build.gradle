@@ -29,10 +29,10 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
 
-    implementation config.rxjavaDependencies.rxAndroid2
-    implementation config.rxjavaDependencies.rxjava2
+    api config.rxjavaDependencies.rxAndroid2
+    api config.rxjavaDependencies.rxjava2
 
-    implementation config.retrofits.adapter
-    implementation config.retrofits.retrofit
-    implementation config.retrofits.converter_gson
+    api config.retrofits.adapter
+    api config.retrofits.retrofit
+    api config.retrofits.converter_gson
 }

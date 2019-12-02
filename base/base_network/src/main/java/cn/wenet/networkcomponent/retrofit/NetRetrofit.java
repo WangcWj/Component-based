@@ -51,6 +51,7 @@ public class NetRetrofit {
 
     public void init() {
         builder = new Retrofit.Builder()
+                .validateEagerly(true)
                 .addConverterFactory(ToStringConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create());

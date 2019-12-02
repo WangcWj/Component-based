@@ -3,11 +3,15 @@
     package="cn.education.app_login">
 
     <application>
+        <activity android:name=".MainActivity"></activity>
+
         <meta-data
             android:name="login"
             android:value="cn.education.app_login.LoginApplication" />
+
         <activity
             android:name=".LoginActivity"
+            android:parentActivityName=".MainActivity"
             android:screenOrientation="portrait" />
     </application>
 

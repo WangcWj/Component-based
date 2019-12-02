@@ -1,4 +1,4 @@
-package cn.wenet.networkcomponent.okhttp;
+package cn.wenet.networkcomponent.okhttp.https;
 
 import java.io.IOException;
 import java.io.InputStream;

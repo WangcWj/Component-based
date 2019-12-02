@@ -1,15 +1,23 @@
 package cn.wenet.networkcomponent.okhttp;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import javax.net.ssl.SSLSocketFactory;
 
 import cn.wenet.networkcomponent.base.NetBaseParam;
+import cn.wenet.networkcomponent.okhttp.https.SSLSocketClient;
 import cn.wenet.networkcomponent.okhttp.intercepter.BaseInterceptor;
 import io.reactivex.annotations.NonNull;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * 只管理跟OkHttp有关的业务,动态添加拦截器的功能去掉了.
@@ -57,6 +65,27 @@ public class NetOkHttp {
                 .sslSocketFactory(sslSocketFactory,SSLSocketClient.UnSafeTrustManager)
                 .hostnameVerifier(SSLSocketClient.UnSafeHostnameVerifier);
         change();
+
+        OkHttpClient okHttpClient = new OkHttpClient();
+
+        RequestBody body = new FormBody.Builder()
+                .add("s","")
+                .build();
+        Request request = new Request.Builder()
+                .post(body)
+                .url("")
+                .build();
+        okHttpClient.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+
+            }
+        });
     }
 
     public void addBaseInterceptor(@NonNull BaseInterceptor interceptor) {

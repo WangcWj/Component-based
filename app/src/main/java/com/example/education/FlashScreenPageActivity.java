@@ -2,6 +2,9 @@ package com.example.education;
 
 import android.util.Log;
 import android.view.View;
+import android.webkit.JsResult;
+import android.webkit.WebChromeClient;
+import android.webkit.WebView;
 import android.widget.ImageView;
 
 
@@ -11,6 +14,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import cn.education.base_res.base.BaseActivity;
+import cn.education.base_res.jsbridge.BaseWebView;
 import cn.education.base_res.utils.click.OnFilterClickListener;
 import cn.router.api.router.WeRouter;
 import cn.router.werouter.annotation.bean.RouterBean;
@@ -25,10 +29,17 @@ public class FlashScreenPageActivity extends BaseActivity {
     @BindView(R.id.icon_flash)
     ImageView mLogo;
 
+    private boolean interceptor = false;
+    private volatile int counnt =0;
+
+
+
     @Override
     protected int getLayoutId() {
         return R.layout.activity_flash_screen;
     }
+
+    BaseWebView webView;
 
     @Override
     protected void realCreate() {
@@ -36,11 +47,27 @@ public class FlashScreenPageActivity extends BaseActivity {
         Glide.with(this).load(pic).into(mLogo);
         Map<String, RouterBean> routerMap = WeRouter.getRouterMap();
         Log.e("WANG", "FlashScreenPageActivity.realCreate." + routerMap.size());
-        mLogo.setOnClickListener(new OnFilterClickListener() {
+        webView = findViewById(R.id.webView);
+        findViewById(R.id.btn).setOnClickListener(new OnFilterClickListener() {
             @Override
             protected void mFilterClick(View v) {
-                WeRouter.getInstance().build("native://TestActivity").navigation(thisActivity());
+                webView.loadUrl("https://www.baidu.com");
             }
         });
+
+        webView.setWebChromeClient(new WebChromeClient(){
+            @Override
+            public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
+                Log.e("WANG","FlashScreenPageActivity.onJsAlert"+message);
+                return super.onJsAlert(view, url, message, result);
+            }
+        });
+
+
+        webView.loadUrl("file:///android_asset/demo.html");
     }
+
+
+
+
 }

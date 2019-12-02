@@ -41,4 +41,5 @@ dependencies {
         //路由
         annotationProcessor project(':router:werouter-compiler')
     }
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }
