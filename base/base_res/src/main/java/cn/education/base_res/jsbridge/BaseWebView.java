@@ -15,6 +15,9 @@ import android.webkit.WebView;
  */
 @SuppressLint("SetJavaScriptEnabled")
 public class BaseWebView extends WebView {
+
+    public final static String JS_HANDLE_MESSAGE_FROM_JAVA = "javascript:_handleMessageFromNative('%s');";
+
     public BridgeWebClient bridgeWebClient;
 
     public BaseWebView(Context context) {
@@ -54,7 +57,11 @@ public class BaseWebView extends WebView {
 
     @SuppressLint("AddJavascriptInterface")
     public void registerJsBridge() {
-        addJavascriptInterface(new AppJsBridge(), "WANG");
+        addJavascriptInterface(new AppJsBridge(this), "WANG");
+    }
+
+    public void dispatcherMessage(){
+
     }
 
 }

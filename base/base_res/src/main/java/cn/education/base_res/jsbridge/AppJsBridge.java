@@ -11,10 +11,15 @@ import android.webkit.JavascriptInterface;
  */
 public class AppJsBridge implements JsBridgeInterface {
 
+    BaseWebView baseWebView;
+
+    public AppJsBridge(BaseWebView baseWebView) {
+        this.baseWebView = baseWebView;
+    }
+
     @JavascriptInterface
     @Override
-    public String bridge(String data) {
-        Log.e("WANG", "AppJsBridge.bridge" + data);
-        return "接收到Web的消息";
+    public void bridge(String data) {
+        Log.e("WANG", "AppJsBridge.bridge" + data+"   Thread   ="+Thread.currentThread().getName());
     }
 }

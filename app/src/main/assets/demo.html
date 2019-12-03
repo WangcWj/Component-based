@@ -18,12 +18,12 @@
 <script>
 
         function testClick() {
-          var fn = eval('window.WANG.bridge')
-          if(typeof fn === 'string'){
-              alert(fn);
-          }else if(typeof fn === 'function'){
-              fn.call(this,);
-          }
+          window.WANG.bridge("Web通知Native");
+          alert("dasdasdas");
+        }
+
+        function receiveNative(String data){
+             alert(data);
         }
 
 
