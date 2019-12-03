@@ -13,7 +13,8 @@ public class AppJsBridge implements JsBridgeInterface {
 
     @JavascriptInterface
     @Override
-    public void bridge(String data) {
+    public String bridge(String data) {
         Log.e("WANG", "AppJsBridge.bridge" + data);
+        return "接收到Web的消息";
     }
 }

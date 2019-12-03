@@ -8,6 +8,6 @@ package cn.education.base_res.jsbridge;
  */
 public interface JsBridgeInterface {
 
-    void bridge(String data);
+    String bridge(String data);
 
 }

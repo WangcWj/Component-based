@@ -18,9 +18,15 @@
 <script>
 
         function testClick() {
-          window.WANG.bridge("wocasdasd ");
-
+          var fn = eval('window.WANG.bridge')
+          if(typeof fn === 'string'){
+              alert(fn);
+          }else if(typeof fn === 'function'){
+              fn.call(this,);
+          }
         }
+
+
 
 
 </script>

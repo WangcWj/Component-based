@@ -2,6 +2,7 @@ package cn.education.base_res.jsbridge;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
@@ -14,7 +15,7 @@ import android.webkit.WebView;
  */
 @SuppressLint("SetJavaScriptEnabled")
 public class BaseWebView extends WebView {
-   public BridgeWebClient bridgeWebClient;
+    public BridgeWebClient bridgeWebClient;
 
     public BaseWebView(Context context) {
         super(context);
@@ -42,14 +43,18 @@ public class BaseWebView extends WebView {
         //settings.setAppCachePath(APP_CACHE_DIRNAME);
         settings.setUseWideViewPort(true);
         settings.setJavaScriptCanOpenWindowsAutomatically(true);
+        //打开网页调试内容。
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setWebContentsDebuggingEnabled(true);
+        }
         bridgeWebClient = new BridgeWebClient();
         super.setWebViewClient(bridgeWebClient);
         registerJsBridge();
     }
 
     @SuppressLint("AddJavascriptInterface")
-    public void registerJsBridge(){
-        addJavascriptInterface(new AppJsBridge(),"WANG");
+    public void registerJsBridge() {
+        addJavascriptInterface(new AppJsBridge(), "WANG");
     }
 
 }
