@@ -3,7 +3,10 @@ package cn.education.base_res.jsbridge;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Build;
+import android.os.Looper;
+import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
@@ -16,7 +19,7 @@ import android.webkit.WebView;
 @SuppressLint("SetJavaScriptEnabled")
 public class BaseWebView extends WebView {
 
-    public final static String JS_HANDLE_MESSAGE_FROM_JAVA = "javascript:_handleMessageFromNative('%s');";
+    public final static String JS_HANDLE_MESSAGE_FROM_JAVA = "javascript:_receiveNative('%s');";
 
     public BridgeWebClient bridgeWebClient;
 
@@ -60,8 +63,48 @@ public class BaseWebView extends WebView {
         addJavascriptInterface(new AppJsBridge(this), "WANG");
     }
 
-    public void dispatcherMessage(){
+    public void dispatcherMessage(JsMessage message) {
+        if (null == message) {
+            return;
+        }
+        //判断线程环境，要在主线程中处理数据
+        if (isMainThread()) {
+            handleMessage(message);
+        } else {
+            post(new JsRunnable(message));
+        }
+    }
 
+    public void handleMessage(JsMessage message){
+        String data = message.getData();
+        if(!TextUtils.isEmpty(data)){
+            String format = String.format(JS_HANDLE_MESSAGE_FROM_JAVA, data);
+            if(isMainThread()) {
+                loadUrl(format);
+            }
+            Log.e("WANG","准备处理Web端的数据："+data+"    Thread =  "+Thread.currentThread().getName());
+        }
+    }
+
+    public boolean isMainThread(){
+        return Thread.currentThread() == Looper.getMainLooper().getThread();
+    }
+
+
+
+
+    private class JsRunnable implements Runnable {
+
+        private JsMessage message;
+
+        public JsRunnable(JsMessage message) {
+            this.message = message;
+        }
+
+        @Override
+        public void run() {
+            handleMessage(message);
+        }
     }
 
 }
