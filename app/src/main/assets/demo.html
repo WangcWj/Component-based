@@ -5,31 +5,27 @@
         js调用java
     </title>
 </head>
-
-<body>
-<p>
-
-    <input id="enter" type="button" style="width:300px;height:200px" value="调用Native的方法"
-           onclick="testClick()"/>
-
-</p>
-
-</body>
 <script>
 
-        function testClick() {
-          window.WANG.bridge("Web通知Native");
-          alert("dasdasdas");
+        function aaa() {
+          window.WANG.bridge("wocale");
         }
 
-        function receiveNative(String data){
+        function receiveNative(){
              alert(data);
         }
 
 
-
-
 </script>
+<body>
+<p>
+
+    <input id="enter" type="button" style="width:300px;height:200px" value="调用Native的方法"
+           onclick="aaa()"/>
+
+</p>
+
+</body>
 
 </html>
 
