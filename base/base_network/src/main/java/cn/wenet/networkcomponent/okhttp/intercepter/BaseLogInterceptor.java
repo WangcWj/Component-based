@@ -27,6 +27,7 @@ import okio.BufferedSource;
 
 public class BaseLogInterceptor extends BaseInterceptor implements Interceptor {
     private static final Charset UTF8 = Charset.forName("UTF-8");
+    public  String TAG = "okhttp";
 
     @Override
     public Response intercept(Chain chain) throws IOException {
@@ -35,11 +36,11 @@ public class BaseLogInterceptor extends BaseInterceptor implements Interceptor {
             HttpUrl httpUrl = request.url();
 
             List<String> strings = httpUrl.encodedPathSegments();
-            if(null != strings && strings.size() > 0) {
-                Log.e("WANG", "BaseLogInterceptor.intercept" + strings);
+            if(strings.size() > 0) {
+                Log.e(TAG, "BaseLogInterceptor.intercept" + strings);
             }
 
-            if (null != httpUrl && null != httpUrl.toString()) {
+            if (!TextUtils.isEmpty(httpUrl.toString())) {
                 String url = httpUrl.toString();
                 if (!TextUtils.isEmpty(url)) {
                     WeDebug.e("URL is : " + url);

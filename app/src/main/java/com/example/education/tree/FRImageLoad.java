@@ -30,14 +30,14 @@ public class FRImageLoad {
     //加载图片地址(圆角)
     public static void loadImageRoundedTransForm(String imageUrl, ImageView imageView, int rotate) {
         if (Util.isOnMainThread()) {
-            GlideApp.with(imageView.getContext()).load(imageUrl).transform(new RoundedTransformation(rotate)).into(imageView);
+            GlideApp.with(imageView.getContext()).load(imageUrl).transform(new RoundsTransformation(rotate)).into(imageView);
         }
     }
 
     //加载图片地址(圆角)
     public static void loadImageRoundedTransForm(int res, ImageView imageView, int rotate) {
         if (Util.isOnMainThread()) {
-            GlideApp.with(imageView.getContext()).load(res).transform(new RoundedTransformation(rotate)).into(imageView);
+            GlideApp.with(imageView.getContext()).load(res).transform(new RoundsTransformation(rotate)).into(imageView);
         }
     }
 
