@@ -52,7 +52,6 @@ public class FlashScreenPageActivity extends BaseActivity {
     BaseWebView webView;
 
 
-
     @Override
     protected void realCreate() {
         String pic = "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1567702323229&di=9b5a06ad29826896703020479e7a5593&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201703%2F30%2F20170330153834_K3uHf.jpeg";
@@ -94,12 +93,60 @@ public class FlashScreenPageActivity extends BaseActivity {
             }
         });
 
-        String[] titles = {"移动","联通","小灵通"};
-        tabLayout.setContainerGravity(Gravity.CENTER);
-        tabLayout.setViewPager(viewPager,titles);
+        String[] titles = {"移动", "联通", "小灵通"};
+        tabLayout.setViewPager(viewPager, titles);
 
+        int mcmxciv = romanToInt("MCMXCIV");
+        Log.e("WANG", "FlashScreenPageActivity.realCreate11 == " + mcmxciv);
+        int mcmxciv1 = romanToInt("LVIII");
+        Log.e("WANG", "FlashScreenPageActivity.realCreate22 == " + mcmxciv1);
+        int mcmxciv2 = romanToInt("III");
+        Log.e("WANG", "FlashScreenPageActivity.realCreate33 == " + mcmxciv2);
 
+    }
 
+    //M = 1000, CM = 900, XC = 90, IV = 4.
+    public int romanToInt(String s) {
+        int num = 0;
+        //先取出最左边的字符，找到对应的数值。
+        int pre = getValue(s.charAt(0));
+        int current = pre;
+        //遍历之后的字符，从1开始。
+        for (int i = 1; i < s.length(); i++) {
+            //下一个字符的数值取出。
+            int cu = getValue(s.charAt(i));
+            //后面的字符跟前面的字符是组合的。
+            if (cu > pre) {
+                current = cu - pre;
+            } else {
+                num += current;
+                current = cu;
+            }
+            pre = cu;
+        }
+        num += current;
+        return num;
+    }
+
+    private int getValue(Character character) {
+        switch (character) {
+            case 'I':
+                return 1;
+            case 'V':
+                return 5;
+            case 'X':
+                return 10;
+            case 'L':
+                return 50;
+            case 'C':
+                return 100;
+            case 'D':
+                return 500;
+            case 'M':
+                return 1000;
+            default:
+                return 0;
+        }
     }
 
     public int reverse(int x) {
