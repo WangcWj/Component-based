@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".FlashScreenPageActivity">
 
-    <ImageView
+    <!--<ImageView
         android:id="@+id/icon_flash"
         android:layout_gravity="center"
         android:layout_width="match_parent"
@@ -15,16 +15,27 @@
     <FrameLayout
         android:id="@+id/fragment_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"/>-->
 
-    <Button
-        android:id="@+id/btn"
+    <com.example.education.SlidingTabLayout
+        android:id="@+id/dil_tablayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="56dp"
+        app:tl_indicator_color="@color/colorAccent"
+        app:tl_indicator_corner_radius="3dp"
+        app:tl_indicator_height="3dp"
+        app:tl_indicator_margin_left="20dp"
+        app:tl_indicator_margin_right="20dp"
+        app:tl_tab_padding="0dp"
+        app:tl_tab_space_equal="false"
+        app:tl_indicator_margin_bottom="10dp"
+        app:tl_textSelectColor="@color/colorAccent"
+        app:tl_textUnselectColor="#333333"
+        app:tl_textsize="15dp"/>
 
-    <cn.education.base_res.jsbridge.BaseWebView
-        android:id="@+id/webView"
-        android:layout_marginTop="40dp"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_marginTop="56dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

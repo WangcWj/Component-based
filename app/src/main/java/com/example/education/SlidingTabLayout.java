@@ -1,4 +1,4 @@
-package cn.fengrong.blinddate.ui.recharge.widget.tablayout;
+package com.example.education;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -26,11 +26,11 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.education.R;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
-import cn.fengrong.blinddate.R;
-import cn.fengrong.blinddate.ui.dialog.ui.TabMarginBean;
 
 /**
  * 自定义横向滑动的TabLayout，支持修改下划线宽高，添加分割线
