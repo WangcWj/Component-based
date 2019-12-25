@@ -242,13 +242,7 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
         updateTabStyles();
     }
 
-    private SparseArray<TabMarginBean> mTabMargin = new SparseArray<>();
-
     private int mContainerGravity = -1;
-
-    public void addTabMarginInfo(int position, TabMarginBean bean) {
-        mTabMargin.put(position, bean);
-    }
 
     public void setContainerGravity(int mContainerGravity) {
         this.mContainerGravity = mContainerGravity;
@@ -295,10 +289,6 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
                 new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
         if (mTabWidth > 0) {
             lpTab = new LinearLayout.LayoutParams((int) mTabWidth, LayoutParams.MATCH_PARENT);
-        }
-        if (mTabMargin.size() != 0) {
-            TabMarginBean tabMarginBean = mTabMargin.get(position);
-            lpTab.setMargins(tabMarginBean.getLeft(), tabMarginBean.getTop(), tabMarginBean.getRight(), tabMarginBean.getBottom());
         }
 
         if (-1 != mContainerGravity) {

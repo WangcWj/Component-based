@@ -96,14 +96,33 @@ public class FlashScreenPageActivity extends BaseActivity {
         String[] titles = {"移动", "联通", "小灵通"};
         tabLayout.setViewPager(viewPager, titles);
 
-        int mcmxciv = romanToInt("MCMXCIV");
-        Log.e("WANG", "FlashScreenPageActivity.realCreate11 == " + mcmxciv);
-        int mcmxciv1 = romanToInt("LVIII");
-        Log.e("WANG", "FlashScreenPageActivity.realCreate22 == " + mcmxciv1);
-        int mcmxciv2 = romanToInt("III");
-        Log.e("WANG", "FlashScreenPageActivity.realCreate33 == " + mcmxciv2);
+        int i = setIndex(0, 10);
+        Log.e("cc.wang", "第一个数值是： " + i);
+        int position = getPosition(i);
+        Log.e("cc.wang", "position是： " + position);
+        int page = getPage(i);
+        Log.e("cc.wang", "page是： " + page);
+
 
     }
+
+    private int MASK_BITS = 9;
+
+    private int MASK = 0x1ff;
+
+    private int getPosition(int mask) {
+        return ~(MASK << MASK_BITS) & mask;
+    }
+
+    private int getPage(int mask) {
+        return mask >> MASK_BITS & MASK;
+    }
+
+
+    private int setIndex(int page, int index) {
+        return page << MASK_BITS | index;
+    }
+
 
     //M = 1000, CM = 900, XC = 90, IV = 4.
     public int romanToInt(String s) {
