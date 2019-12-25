@@ -58,15 +58,15 @@ public class FlashScreenPageActivity extends BaseActivity {
 //        Glide.with(this).load(pic).into(mLogo);
         Map<String, RouterBean> routerMap = WeRouter.getRouterMap();
 //        Log.e("WANG", "FlashScreenPageActivity.realCreate." + routerMap.size());
-       /* webView = findViewById(R.id.webView);
+        //webView = findViewById(R.id.webView);
         findViewById(R.id.btn).setOnClickListener(new OnFilterClickListener() {
             @Override
             protected void mFilterClick(View v) {
-                webView.loadUrl("https://www.baidu.com");
+                WeRouter.getInstance().build("native://BannerActivity").navigation(FlashScreenPageActivity.this);
             }
         });
 
-        webView.setWebChromeClient(new WebChromeClient() {
+       /*  webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onJsAlert(WebView view, String url, String message, JsResult result) {
                 Log.e("WANG", "FlashScreenPageActivity.onJsAlert" + message);
@@ -78,7 +78,7 @@ public class FlashScreenPageActivity extends BaseActivity {
         webView.loadUrl("file:///android_asset/demo.html");*/
 
 
-        SlidingTabLayout tabLayout = findViewById(R.id.dil_tablayout);
+        /*SlidingTabLayout tabLayout = findViewById(R.id.dil_tablayout);
         ViewPager viewPager = findViewById(R.id.viewpager);
 
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
@@ -101,7 +101,7 @@ public class FlashScreenPageActivity extends BaseActivity {
         int position = getPosition(i);
         Log.e("cc.wang", "position是： " + position);
         int page = getPage(i);
-        Log.e("cc.wang", "page是： " + page);
+        Log.e("cc.wang", "page是： " + page);*/
 
 
     }

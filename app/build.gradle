@@ -41,10 +41,16 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
+    repositories {
+        flatDir {dirs 'libs'}
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation(name:'bannermodule-release',ext:'aar')
     if (null != modules && modules.size() > 0) {
         modules.each { name ->
             implementation project(":${name}")
@@ -53,6 +59,7 @@ dependencies {
     implementation project(config.baseRes)
 
     //内存泄漏检测
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
     debugImplementation config.leakCanary.debug
     releaseImplementation config.leakCanary.release
     //路由

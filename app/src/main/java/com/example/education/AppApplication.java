@@ -44,27 +44,6 @@ public class AppApplication extends BaseApplication {
                 .navigation();
         loginInit.onCreate();
         mainInit.onCreate();*/
-      getApplicationContext();
-
-        try {
-            ApplicationInfo applicationInfo = getPackageManager().getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
-            String value = applicationInfo.metaData.getString("login");
-            if(!TextUtils.isEmpty(value)){
-                Class<?> aClass = Class.forName(value);
-                Object o = aClass.newInstance();
-                Log.e("WANG","AppApplication.runInManProgress:   "+o);
-            }
-        } catch (PackageManager.NameNotFoundException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        }
-
-
     }
 
     private void leakCarry() {
