@@ -59,12 +59,6 @@ public class FlashScreenPageActivity extends BaseActivity {
         Map<String, RouterBean> routerMap = WeRouter.getRouterMap();
 //        Log.e("WANG", "FlashScreenPageActivity.realCreate." + routerMap.size());
         //webView = findViewById(R.id.webView);
-        findViewById(R.id.btn).setOnClickListener(new OnFilterClickListener() {
-            @Override
-            protected void mFilterClick(View v) {
-                WeRouter.getInstance().build("native://BannerActivity").navigation(FlashScreenPageActivity.this);
-            }
-        });
 
        /*  webView.setWebChromeClient(new WebChromeClient() {
             @Override
@@ -78,7 +72,7 @@ public class FlashScreenPageActivity extends BaseActivity {
         webView.loadUrl("file:///android_asset/demo.html");*/
 
 
-        /*SlidingTabLayout tabLayout = findViewById(R.id.dil_tablayout);
+        SlidingTabLayout tabLayout = findViewById(R.id.dil_tablayout);
         ViewPager viewPager = findViewById(R.id.viewpager);
 
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
@@ -96,6 +90,7 @@ public class FlashScreenPageActivity extends BaseActivity {
         String[] titles = {"移动", "联通", "小灵通"};
         tabLayout.setViewPager(viewPager, titles);
 
+        /*
         int i = setIndex(0, 10);
         Log.e("cc.wang", "第一个数值是： " + i);
         int position = getPosition(i);

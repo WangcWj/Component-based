@@ -228,6 +228,8 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
 
     /**
      * 更新数据
+     * <p>
+     * step 1 :
      */
     public void notifyDataSetChanged() {
         mTabsContainer.removeAllViews();
@@ -250,15 +252,13 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
 
     /**
      * 创建并添加tab
+     * step 2 :
      */
     private void addTab(final int position, String title, View tabView) {
         TextView tvTabTitle = (TextView) tabView.findViewById(R.id.tv_tab_title);
         if (tvTabTitle != null) {
-            if (title != null) {
-                tvTabTitle.setText(title);
-            }
+            tvTabTitle.setText(title);
         }
-
         tabView.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -298,6 +298,9 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
         mTabsContainer.addView(tabView, position, lpTab);
     }
 
+    /**
+     * step 3 :
+     */
     private void updateTabStyles() {
         for (int i = 0; i < mTabCount; i++) {
             View v = mTabsContainer.getChildAt(i);

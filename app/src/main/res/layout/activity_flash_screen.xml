@@ -18,13 +18,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>-->
 
-    <Button
-        android:id="@+id/btn"
-        android:text="跳转"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
 
-    <!--<com.example.education.SlidingTabLayout
+    <com.example.education.SlidingTabLayout
         android:id="@+id/dil_tablayout"
         android:layout_width="match_parent"
         android:layout_height="56dp"
@@ -44,6 +39,6 @@
         android:id="@+id/viewpager"
         android:layout_marginTop="56dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>-->
+        android:layout_height="match_parent"/>
 
 </FrameLayout>
