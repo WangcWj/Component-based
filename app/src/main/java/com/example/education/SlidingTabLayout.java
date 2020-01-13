@@ -17,6 +17,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.util.SparseArray;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -25,8 +26,6 @@ import android.view.ViewGroup;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-
-import com.example.education.R;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -110,7 +109,6 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
     private boolean mTextAllCaps;
 
     private int mLastScrollX;
-    private int mHeight;
     private boolean mSnapOnTabClick;
 
     public SlidingTabLayout(Context context) {
@@ -136,17 +134,10 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
 
         obtainAttributes(context, attrs);
 
-        //get layout_height
+        //读取XMl中的属性设置。
         String height = attrs.getAttributeValue("http://schemas.android.com/apk/res/android", "layout_height");
+        Log.e("cc.wang","SlidingTabLayout.SlidingTabLayout."+height);
 
-        if (height.equals(ViewGroup.LayoutParams.MATCH_PARENT + "")) {
-        } else if (height.equals(ViewGroup.LayoutParams.WRAP_CONTENT + "")) {
-        } else {
-            int[] systemAttrs = {android.R.attr.layout_height};
-            TypedArray a = context.obtainStyledAttributes(attrs, systemAttrs);
-            mHeight = a.getDimensionPixelSize(0, ViewGroup.LayoutParams.WRAP_CONTENT);
-            a.recycle();
-        }
     }
 
     private void obtainAttributes(Context context, AttributeSet attrs) {
@@ -372,6 +363,10 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
         }
     }
 
+    /**
+     * 更改选中的tab的字体的颜色跟大小。
+     * @param position
+     */
     private void updateTabSelection(int position) {
         for (int i = 0; i < mTabCount; ++i) {
             View tabView = mTabsContainer.getChildAt(i);
@@ -389,28 +384,36 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
 
     private float margin;
 
+    /**
+     * 1.该方法的主要作用是计算指示器的left跟right距离。
+     * 2.当Tab能滑动的时候，将选中的Tab至于屏幕中间。
+     */
     private void calcIndicatorRect() {
+        //获取当前你的Tab的布局。
         View currentTabView = mTabsContainer.getChildAt(this.mCurrentTab);
         float left = currentTabView.getLeft();
         float right = currentTabView.getRight();
 
-        //for mIndicatorWidthEqualTitle
+        //的那个指示器要跟文本的宽度一致的时候。
         if (mIndicatorStyle == STYLE_NORMAL && mIndicatorWidthEqualTitle) {
             TextView mTabTitle = currentTabView.findViewById(R.id.tv_tab_title);
             mTextPaint.setTextSize(mTextsize);
             float textWidth = mTextPaint.measureText(mTabTitle.getText().toString());
+            //获取指示器的左右margin。
             margin = (right - left - textWidth) / 2;
         }
 
+        //下面这部分是ViewPager滑动的时候，指示器要跟着ViewPager的滑动而滑动。
         if (this.mCurrentTab < mTabCount - 1) {
+            //拿出下一个Tab的View，计算出需要滑动的距离。left和right。
             View nextTabView = mTabsContainer.getChildAt(this.mCurrentTab + 1);
             float nextTabLeft = nextTabView.getLeft();
             float nextTabRight = nextTabView.getRight();
-
+            //当ViewPager滑动的时候计算出指示器的left跟right距离。
             left = left + mCurrentPositionOffset * (nextTabLeft - left);
             right = right + mCurrentPositionOffset * (nextTabRight - right);
 
-            //for mIndicatorWidthEqualTitle
+            //当指示器的宽度跟文本你的宽度相同的时候，计算出指示器需要的margin，确保指示器的宽度跟文本的宽度相等。
             if (mIndicatorStyle == STYLE_NORMAL && mIndicatorWidthEqualTitle) {
                 TextView mNextTabTitle = nextTabView.findViewById(R.id.tv_tab_title);
                 mTextPaint.setTextSize(mTextsize);
@@ -419,18 +422,18 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
                 margin = margin + mCurrentPositionOffset * (nextMargin - margin);
             }
         }
-
+        //设置指示器的左右边距。
         mIndicatorRect.left = (int) left;
         mIndicatorRect.right = (int) right;
-        //for mIndicatorWidthEqualTitle
+        //如果指示器的宽度要跟文本相等的话，还要加上margin。
         if (mIndicatorStyle == STYLE_NORMAL && mIndicatorWidthEqualTitle) {
             mIndicatorRect.left = (int) (left + margin - 1);
             mIndicatorRect.right = (int) (right - margin - 1);
         }
-
+        //将选中的Tab滑动到中间的位置。
         mTabRect.left = (int) left;
         mTabRect.right = (int) right;
-        //indicatorWidth小于0时,原jpardogo's PagerSlidingTabStrip
+        //mIndicatorWidth是代码设置的指示器的宽度。
         if (mIndicatorWidth < 0) {
 
         } else {//indicatorWidth大于0时,圆角矩形以及三角形
@@ -476,8 +479,7 @@ public class SlidingTabLayout extends HorizontalScrollView implements ViewPager.
             }
         }
 
-        //draw indicator line
-
+        //计算mIndicatorRect的left跟right。
         calcIndicatorRect();
         if (mIndicatorStyle == STYLE_TRIANGLE) {
             if (mIndicatorHeight > 0) {
