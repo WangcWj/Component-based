@@ -20,4 +20,10 @@
         android:layout_height="wrap_content"
         android:text="跳转到Main" />
 
+    <com.example.education.lock.LockPatternView
+        android:id="@+id/lock"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:layout_gravity="center_horizontal" />
+
 </LinearLayout>

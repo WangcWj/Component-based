@@ -2,10 +2,18 @@ package com.example.education;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.education.lock.LockPatternUtil;
+import com.example.education.lock.LockPatternView;
+
+import java.util.List;
+
+import cn.router.api.router.WeRouter;
 
 
 /**
@@ -31,7 +39,22 @@ public class CeshiFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_ceshi, container, false);
+        View inflate = inflater.inflate(R.layout.fragment_ceshi, container, false);
+        View viewById = inflate.findViewById(R.id.btn222);
+        viewById.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                WeRouter.getInstance().build("native://TestActivity").navigation(getActivity());
+            }
+        });
+        return inflate;
     }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+    }
+
 
 }
