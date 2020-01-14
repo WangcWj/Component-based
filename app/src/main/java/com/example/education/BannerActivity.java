@@ -1,17 +1,15 @@
 package com.example.education;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.example.wang.bannermodule.listener.BannerPagerClickListener;
 import cn.example.wang.bannermodule.view.BannerViewLayout;
 import cn.router.werouter.annotation.Router;
 

@@ -1,6 +1,6 @@
 package cn.education.app_main;
 
-import android.support.v4.app.Fragment;
+import androidx.core.app.Fragment;
 
 import cn.education.base_res.output.mainmodule.MainModuleMethod;
 import cn.router.werouter.annotation.Router;

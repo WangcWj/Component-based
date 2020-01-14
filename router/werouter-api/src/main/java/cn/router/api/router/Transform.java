@@ -2,7 +2,6 @@ package cn.router.api.router;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 
 import java.util.Map;
 import java.util.Set;

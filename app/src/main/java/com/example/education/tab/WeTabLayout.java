@@ -5,6 +5,11 @@ import android.util.AttributeSet;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 
+import androidx.viewpager.widget.ViewPager;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created to :
  *
@@ -28,6 +33,7 @@ public class WeTabLayout extends HorizontalScrollView {
 
     private Context mContext;
     private LinearLayout mTabContainer;
+    private List<String> mTitles;
 
     private void initView(Context context, AttributeSet attrs) {
         initScrollView();
@@ -43,6 +49,13 @@ public class WeTabLayout extends HorizontalScrollView {
         setWillNotDraw(false);
         setClipChildren(false);
         setClipToPadding(false);
+    }
+
+    public void attacToViewPager(ViewPager viewPager, String[] titles){
+
+        mTitles = new ArrayList<>();
+
+
     }
 
 

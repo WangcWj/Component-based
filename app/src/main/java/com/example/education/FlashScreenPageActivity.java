@@ -1,28 +1,18 @@
 package com.example.education;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
+
 import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
-import android.webkit.JsResult;
-import android.webkit.WebChromeClient;
-import android.webkit.WebView;
 import android.widget.ImageView;
 
 
-import com.bumptech.glide.Glide;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.Map;
 
-import butterknife.BindView;
 import cn.education.base_res.base.BaseActivity;
 import cn.education.base_res.jsbridge.BaseWebView;
-import cn.education.base_res.utils.click.OnFilterClickListener;
 import cn.router.api.router.WeRouter;
 import cn.router.werouter.annotation.bean.RouterBean;
 
@@ -42,11 +32,6 @@ public class FlashScreenPageActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_flash_screen;
-    }
-
-    @Override
-    protected boolean userButterKnife() {
-        return false;
     }
 
     BaseWebView webView;

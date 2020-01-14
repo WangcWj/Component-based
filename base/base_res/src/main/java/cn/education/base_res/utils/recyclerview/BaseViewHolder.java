@@ -1,10 +1,12 @@
 package cn.education.base_res.utils.recyclerview;
 
-import android.support.v7.widget.RecyclerView;
+
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * 配合{@link BaseRecycleAdapter} 使用

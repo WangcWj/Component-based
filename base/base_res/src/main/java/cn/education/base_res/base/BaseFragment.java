@@ -4,8 +4,9 @@ package cn.education.base_res.base;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
-import android.support.v4.app.Fragment;
+import androidx.annotation.IdRes;
+import androidx.fragment.app.Fragment;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +18,7 @@ import android.view.ViewGroup;
  * 2.不想要懒加载的话那请求网络可以放到 {@link BaseFragment#pageInitData()}.
  * <p>
  * 3.懒加载+只加载一次的话 {@link BaseFragment#pageLoadDataOnce()}.
- * 具体情况还是要看ViewPager缓存的个数{@link android.support.v4.view.ViewPager#setOffscreenPageLimit(int)}
+ * 具体情况还是要看ViewPager缓存的个数{@link androidx.viewpager.widget.ViewPager#setOffscreenPageLimit(int)}
  * 如果不设置缓存全部的话,那每次创建Fragment的时候都会调用一次.
  * <p>
  * 4.每次页面可见的时候都调用(不是onResume的效果这是切换到当前Fragment){@link BaseFragment#pageLoadDataOnVisible()}

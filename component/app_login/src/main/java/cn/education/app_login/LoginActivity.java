@@ -1,6 +1,6 @@
 package cn.education.app_login;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import cn.router.werouter.annotation.Router;

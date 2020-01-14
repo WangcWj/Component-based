@@ -1,17 +1,11 @@
 package com.example.education;
 
-import android.content.Intent;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.app.TaskStackBuilder;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.example.education.lock.LockPatternUtil;
 import com.example.education.lock.LockPatternView;
 
 import java.util.List;

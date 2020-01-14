@@ -10,7 +10,7 @@ android {
         versionCode config.appVersion.versionCode
         versionName config.appVersion.versionName
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -31,11 +31,10 @@ dependencies {
     api project(config.baseNetwork)
     api project(':router:werouter-api')
 
-    api config.supports.appcompat
-    api config.supports.constraint
-    api config.supports.design
-    api config.supports.multidex
-    api config.bufferkinfe.api
+    api config.androidx.appcompat
+    api config.androidx.constraint
+    api config.androidx.recycler
+    api config.androidx.multidex
 
 
     api (config.glide.api){

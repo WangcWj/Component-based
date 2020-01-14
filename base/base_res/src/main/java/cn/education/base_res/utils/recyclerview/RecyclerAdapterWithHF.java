@@ -1,16 +1,16 @@
 package cn.education.base_res.utils.recyclerview;
 
-import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.AdapterDataObserver;
-import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.support.v7.widget.StaggeredGridLayoutManager;
+
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -101,7 +101,7 @@ public class RecyclerAdapterWithHF extends RecyclerView.Adapter<RecyclerView.Vie
         // if our position is one of our items (this comes from
         // getItemViewType(int position) below)
         if (type != TYPE_HEADER && type != TYPE_FOOTER) {
-            ViewHolder vh = onCreateViewHolderHF(viewGroup, type);
+            RecyclerView.ViewHolder vh = onCreateViewHolderHF(viewGroup, type);
             return vh;
             // else we have a header/footer
         } else {
@@ -139,7 +139,7 @@ public class RecyclerAdapterWithHF extends RecyclerView.Adapter<RecyclerView.Vie
         return position - mHeaders.size();
     }
 
-    public void onBindViewHolderHF(ViewHolder vh, int position) {
+    public void onBindViewHolderHF(RecyclerView.ViewHolder vh, int position) {
         mAdapter.onBindViewHolder(vh, position);
     }
 
@@ -291,7 +291,7 @@ public class RecyclerAdapterWithHF extends RecyclerView.Adapter<RecyclerView.Vie
         }
     }
 
-    public RecyclerView.Adapter<ViewHolder> getmAdapter() {
+    public RecyclerView.Adapter<RecyclerView.ViewHolder> getmAdapter() {
         return mAdapter;
     }
 
@@ -327,9 +327,9 @@ public class RecyclerAdapterWithHF extends RecyclerView.Adapter<RecyclerView.Vie
     private OnItemLongClickListener onItemLongClickListener;
 
     private class MyOnClickListener implements OnClickListener {
-        private ViewHolder vh;
+        private RecyclerView.ViewHolder vh;
 
-        public MyOnClickListener(ViewHolder vh) {
+        public MyOnClickListener(RecyclerView.ViewHolder vh) {
             super();
             this.vh = vh;
         }
@@ -345,9 +345,9 @@ public class RecyclerAdapterWithHF extends RecyclerView.Adapter<RecyclerView.Vie
     }
 
     private class MyOnLongClickListener implements OnLongClickListener {
-        private ViewHolder vh;
+        private RecyclerView.ViewHolder vh;
 
-        public MyOnLongClickListener(ViewHolder vh) {
+        public MyOnLongClickListener(RecyclerView.ViewHolder vh) {
             super();
             this.vh = vh;
         }
@@ -365,23 +365,23 @@ public class RecyclerAdapterWithHF extends RecyclerView.Adapter<RecyclerView.Vie
 
     }
 
-    protected void onItemClick(ViewHolder vh, int position) {
+    protected void onItemClick(RecyclerView.ViewHolder vh, int position) {
 
     }
 
-    protected void onItemLongClick(ViewHolder vh, int position) {
+    protected void onItemLongClick(RecyclerView.ViewHolder vh, int position) {
 
     }
 
     public static interface OnItemClickListener {
-        void onItemClick(RecyclerAdapterWithHF adapter, ViewHolder vh, int position);
+        void onItemClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position);
     }
 
     public static interface OnItemLongClickListener {
-        void onItemLongClick(RecyclerAdapterWithHF adapter, ViewHolder vh, int position);
+        void onItemLongClick(RecyclerAdapterWithHF adapter, RecyclerView.ViewHolder vh, int position);
     }
 
-    private RecyclerView.Adapter<ViewHolder> mAdapter;
+    private RecyclerView.Adapter<RecyclerView.ViewHolder> mAdapter;
 
     public <T extends RecyclerView.Adapter> RecyclerAdapterWithHF(T adapter) {
         super();
@@ -393,7 +393,7 @@ public class RecyclerAdapterWithHF extends RecyclerView.Adapter<RecyclerView.Vie
 
     }
 
-    private AdapterDataObserver adapterDataObserver = new AdapterDataObserver() {
+    private RecyclerView.AdapterDataObserver adapterDataObserver = new RecyclerView.AdapterDataObserver() {
         @Override
         public void onChanged() {
             notifyDataSetChanged();

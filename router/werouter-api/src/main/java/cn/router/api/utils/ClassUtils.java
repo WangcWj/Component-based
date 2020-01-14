@@ -1,10 +1,9 @@
 package cn.router.api.utils;
 
-import android.support.annotation.CheckResult;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.annotation.UiThread;
-import android.text.TextUtils;
+import androidx.annotation.CheckResult;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.UiThread;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;

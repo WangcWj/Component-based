@@ -1,9 +1,8 @@
 package cn.education.base_res.base;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 
-import butterknife.ButterKnife;
 import cn.education.base_res.utils.ActivityStackManager;
 
 
@@ -23,19 +22,12 @@ public abstract class BaseActivity extends AppCompatActivity {
         return this;
     }
 
-    protected boolean userButterKnife() {
-        return true;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         int layoutId = getLayoutId();
         setContentView(layoutId);
         ActivityStackManager.getInstance().addActivity(this);
-        if (userButterKnife()) {
-            ButterKnife.bind(this);
-        }
         realCreate();
     }
 

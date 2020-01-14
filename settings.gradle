@@ -1,1 +1,1 @@
-include ':app', ':app_login', ':app_main', ':base:base_lib', ':base:base_res',':base:base_network',':router:werouter-annotation',':router:werouter-api',':router:werouter-compiler',':router:werouter_plugin'
+include ':app', ':component:app_login', ':component:app_main', ':base:base_lib', ':base:base_res',':base:base_network',':router:werouter-annotation',':router:werouter-api',':router:werouter-compiler',':router:werouter_plugin'

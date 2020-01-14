@@ -1,68 +1,57 @@
+ext {
+
+    app = [
+            compileSdkVersion: 28,
+            applicationId    : 'com.example.education',
+            minSdkVersion    : 15,
+            targetSdkVersion : 28
+    ]
+
+    appVersion = [
+            versionCode: 1,
+            versionName: '1.0.0'
+    ]
+
+    baseLib = ':base:base_lib'
+    baseRes = ':base:base_res'
+    baseNetwork = ':base:base_network'
+
+    loginModuleIsRun = false
+    mainModuleIsRun = false
 
 
-  ext {
+    androidx = [
+            appcompat : 'androidx.appcompat:appcompat:1.1.0',
+            constraint: 'androidx.constraintlayout:constraintlayout:1.1.3',
+            multidex  : 'androidx.multidex:multidex:2.0.0',
+            recycler  : 'androidx.recyclerview:recyclerview:1.0.0'
+    ]
 
-      app =[
-          compileSdkVersion : 28,
-          applicationId : 'com.example.education',
-          minSdkVersion : 15,
-          targetSdkVersion : 28
-      ]
+    rxjavaDependencies = [
+            rxAndroid2: 'io.reactivex.rxjava2:rxandroid:2.0.2',
+            rxjava2   : 'io.reactivex.rxjava2:rxjava:2.2.2'
+    ]
 
-      appVersion = [
-              versionCode : 1,
-              versionName : '1.0.0'
-      ]
+    retrofits = [
+            adapter       : 'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
+            retrofit      : 'com.squareup.retrofit2:retrofit:2.6.2',
+            converter_gson: 'com.squareup.retrofit2:converter-gson:2.3.0'
+    ]
 
-      baseLib = ':base:base_lib'
-      baseRes = ':base:base_res'
-      baseNetwork = ':base:base_network'
+    leakCanary = [
+            debug  : 'com.squareup.leakcanary:leakcanary-android:1.5.4',
+            release: 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
+    ]
 
-      loginModuleIsRun = false
-      mainModuleIsRun = false
+    glide = [
+            api: 'com.github.bumptech.glide:glide:4.9.0',
+    ]
 
+    router = 'cn.wang.werouter:api:1.0.2'
 
+    gson = 'com.google.code.gson:gson:2.8.5'
 
-      supports = [
-              appcompat  : 'com.android.support:appcompat-v7:26.1.0',
-              constraint : 'com.android.support.constraint:constraint-layout:1.1.3',
-              multidex   : 'com.android.support:multidex:1.0.3',
-              design     : 'com.android.support:design:26.1.0'
-      ]
-
-      rxjavaDependencies = [
-              rxAndroid2 : 'io.reactivex.rxjava2:rxandroid:2.0.2',
-              rxjava2 : 'io.reactivex.rxjava2:rxjava:2.2.2'
-      ]
-
-      retrofits = [
-              adapter : 'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
-              retrofit : 'com.squareup.retrofit2:retrofit:2.6.2',
-              converter_gson : 'com.squareup.retrofit2:converter-gson:2.3.0'
-      ]
-
-      leakCanary = [
-              debug :'com.squareup.leakcanary:leakcanary-android:1.5.4',
-              release :'com.squareup.leakcanary:leakcanary-android-no-op:1.5.4'
-      ]
-
-      bufferkinfe = [
-              api:'com.jakewharton:butterknife:8.8.1',
-              annotation :'com.jakewharton:butterknife-compiler:8.8.1',
-              plugin_all :'com.jakewharton:butterknife-gradle-plugin:8.5.1',
-              plugin :'com.jakewharton.butterknife'
-      ]
-
-      glide = [
-              api : 'com.github.bumptech.glide:glide:4.9.0',
-      ]
-
-      router = 'cn.wang.werouter:api:1.0.2'
-
-      gson = 'com.google.code.gson:gson:2.8.5'
-
-      eventBus = 'org.greenrobot:eventbus:3.1.1'
+    eventBus = 'org.greenrobot:eventbus:3.1.1'
 
 
-
-  }
+}

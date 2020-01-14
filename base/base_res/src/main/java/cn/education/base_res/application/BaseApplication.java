@@ -2,7 +2,7 @@ package cn.education.base_res.application;
 
 import android.app.Application;
 import android.content.Context;
-import android.support.multidex.MultiDex;
+import androidx.multidex.MultiDex;
 
 /**
  * Created to :解决dex文件超过65536的限制,实现分dex.
