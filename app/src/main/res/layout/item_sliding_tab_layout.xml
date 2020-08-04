@@ -10,7 +10,9 @@
         android:layout_width="80dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:background="@color/grey_a5a5a5"
         android:gravity="center"
-        android:singleLine="true" />
+        android:singleLine="true"
+        android:tag="tab_text" />
 
 </RelativeLayout>

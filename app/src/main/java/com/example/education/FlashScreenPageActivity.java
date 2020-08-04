@@ -9,10 +9,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.education.tab.WeTabLayout;
+
 import java.util.Map;
 
 import cn.education.base_res.base.BaseActivity;
-import cn.education.base_res.jsbridge.BaseWebView;
 import cn.router.api.router.WeRouter;
 import cn.router.werouter.annotation.bean.RouterBean;
 
@@ -57,9 +58,9 @@ public class FlashScreenPageActivity extends BaseActivity {
         webView.loadUrl("file:///android_asset/demo.html");*/
 
 
-        SlidingTabLayout tabLayout = findViewById(R.id.dil_tablayout);
+        WeTabLayout tabLayout = findViewById(R.id.dil_tablayout);
         ViewPager viewPager = findViewById(R.id.viewpager);
-
+        String[] titles = {"移动", "四个字的", "小灵通", "NBA", "私密电影啊", "电影", "小知识", "篮球"};
         viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override
             public Fragment getItem(int position) {
@@ -68,12 +69,14 @@ public class FlashScreenPageActivity extends BaseActivity {
 
             @Override
             public int getCount() {
-                return 3;
+                return titles.length;
             }
         });
 
-        String[] titles = {"移动", "联通", "小灵通"};
-        tabLayout.setViewPager(viewPager, titles);
+        tabLayout.setTabLayout(R.layout.item_sliding_tab_layout);
+        tabLayout.setIndicatorBottomMargin(10);
+        tabLayout.setTabFillContainer(false);
+        tabLayout.attachToViewPager(viewPager, titles);
 
         /*
         int i = setIndex(0, 10);
@@ -82,6 +85,15 @@ public class FlashScreenPageActivity extends BaseActivity {
         Log.e("cc.wang", "position是： " + position);
         int page = getPage(i);
         Log.e("cc.wang", "page是： " + page);*/
+
+        String str = " rtt min/avg/max/mdev = 67.315/81.839/116.577/20.197 ms";
+        int i = str.lastIndexOf("=");
+        String substring = str.substring(i);
+        String[] strings = substring.split("/");
+        for (int j = 0; j < strings.length; j++) {
+            Log.e("cc.wang", "FlashScreenPageActivity.realCreate." + strings[j]);
+
+        }
 
 
     }

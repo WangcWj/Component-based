@@ -11,6 +11,8 @@
       <module fileurl="file://$PROJECT_DIR$/base/base_network/base_network.iml" filepath="$PROJECT_DIR$/base/base_network/base_network.iml" />
       <module fileurl="file://$PROJECT_DIR$/base/base_res/base_res.iml" filepath="$PROJECT_DIR$/base/base_res/base_res.iml" />
       <module fileurl="file://$PROJECT_DIR$/component/component.iml" filepath="$PROJECT_DIR$/component/component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/component/app_login/component-app_login.iml" filepath="$PROJECT_DIR$/component/app_login/component-app_login.iml" />
+      <module fileurl="file://$PROJECT_DIR$/component/app_main/component-app_main.iml" filepath="$PROJECT_DIR$/component/app_main/component-app_main.iml" />
       <module fileurl="file://$PROJECT_DIR$/router/router.iml" filepath="$PROJECT_DIR$/router/router.iml" />
       <module fileurl="file://$PROJECT_DIR$/router/werouter-annotation/werouter-annotation.iml" filepath="$PROJECT_DIR$/router/werouter-annotation/werouter-annotation.iml" />
       <module fileurl="file://$PROJECT_DIR$/router/werouter-api/werouter-api.iml" filepath="$PROJECT_DIR$/router/werouter-api/werouter-api.iml" />
